@@ -8,11 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_executable(main)
 
-target_sources(main 
-    PRIVATE
-        main.cpp
-    PRIVATE
-        FILE_SET CXX_MODULES
-        FILES
-            simpleIntegerReturn.cpp
-        )
+target_sources(
+  main
+  PRIVATE main.cpp
+  PRIVATE FILE_SET CXX_MODULES FILES myModule.cpp)
