@@ -7,7 +7,6 @@ module;
 
 module lib1;
 
-#define MODULE_EXPORT
 #define USE_NON_INCLUDES_CONTENT
 #include "Lib1_header1.cpp"
 #include "Lib1_header2.cpp"
