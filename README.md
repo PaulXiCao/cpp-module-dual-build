@@ -25,6 +25,10 @@ Benefit: Changing implementation (i.e. `myHeader.cpp`) does not force recompilic
 
 Multiple headers and translation units are collected in one module (+implementation unit).
 
+# 06: Multiple libraries 
+
+Multiple libraries exporting modules and importing each other.
+
 # Resources/Ideas
 
 - switch by CMake option
