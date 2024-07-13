@@ -7,7 +7,11 @@
 #endif
 
 #ifdef USE_INCLUDES_FROM_OTHER_LIBRARIES
+#ifndef USE_MODULES // fixme: Should be more specific? E.g. DOES_LIB1_USE_MODULES
 #include "Lib1_header2.hpp"
+#else
+#define IMPORT_LIB1
+#endif
 #endif
 
 #ifdef USE_NON_INCLUDES_CONTENT
