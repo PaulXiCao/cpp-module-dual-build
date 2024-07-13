@@ -21,6 +21,10 @@ It contains the
 
 Benefit: Changing implementation (i.e. `myHeader.cpp`) does not force recompilication chain (e.g. `myModule.cpp` and whereever it is `import`ed).
 
+# 05: Collect multiple headers in one wrapper module
+
+Multiple headers and translation units are collected in one module (+implementation unit).
+
 # Resources/Ideas
 
 - switch by CMake option
