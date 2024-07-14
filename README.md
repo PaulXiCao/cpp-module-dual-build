@@ -38,3 +38,4 @@ Every folder adds some new feature for a dual build mode of general libraries.
 
 - Daniela-E explains how she transformed fmt to use modules (alongside header build) on [reddit](https://www.reddit.com/r/cpp/comments/1busseu/comment/kxvfayf).
 - My [blog post](https://paulxicao.github.io/c++/2024/07/14/cpp-modules-dual-build.html) explaining implementation details.
+- [Reddit discussion](https://www.reddit.com/r/cpp/comments/1e37dd6/dual_build_mode_header_includes_or_module_imports/) about this dual build idea
