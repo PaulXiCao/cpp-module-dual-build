@@ -1,40 +1,40 @@
 # Overview
 
-We will explore modules by examples. 
-Every folder adds something new to modules.
-If you want to see the a full blown example see ... (not yet created.)
+This repository explores the possibility to package a C++ library for dual build mode: Either use it via classical header includes or via module import.
 
-A module has a _module interface_ declares its public interface (e.g. namespaces, types, functions, etc.).
+The goal is for code as this example to work:
+```cpp
+#ifdef USE_MODULES
+    import myLib;                   // imports: myLib::{myFunc1, myFunc2}
+#else
+    #include <myLib/header1.hpp>    // includes: myLib::myFunc1
+    #include <myLib/header2.hpp>    // includes: myLib::myFunc2
+#endif
 
-A _module implementation_ defines the declared entities.
+int main() {
+    myLib::myFunc1();
+    myLib::myFunc2();
+}
+```
 
-A module can be split into submodules called _partitions_.
+The main motivation is to make use of possible compile-time reductions of module imports while still being backward compatible for older compilers.
+The changes to the original hpp/cpp files should be minimal and where possible, no duplication of code (even for declaring entities of the modules).
 
-It has exactly one _primary module interface_, but multiple 
+See [this](https://paulxicao.github.io/c++/2024/07/14/cpp-modules-dual-build.html) associated blog post explaining most implementation ideas.
 
-# Simplest module
+# Code structure
 
-The folder [01_simpleFunction/](01_simpleFunction/) contains a "Hello World"-type module.
-It contains the
+There are multiple sub-folders, e.g. 01/, .., 06/.
+Every folder adds some new feature for a dual build mode of general libraries.
 
-# 04: Seperate module implementation unit
+- `01/`: Just a simple "Hello World"-type module.
+- `02/`: Dual build mode of a trivial library containing only one function.
+- `03/`: Dual build mode of a trivial library in a style similar to the fmt library.
+- `04/`: Dual build mode with a separate module implementation unit.
+- `05/`: Dual build mode of a library containing multiple hpp/cpp files.
+- `06/`: Dual build mode of multiple libraries.
 
-Benefit: Changing implementation (i.e. `myHeader.cpp`) does not force recompilication chain (e.g. `myModule.cpp` and whereever it is `import`ed).
+# Resources
 
-# 05: Collect multiple headers in one wrapper module
-
-Multiple headers and translation units are collected in one module (+implementation unit).
-
-# 06: Multiple libraries 
-
-Multiple libraries exporting modules and importing each other.
-
-# Resources/Ideas
-
-- switch by CMake option
-- switch by preprocessor macro
-- non-intrusive for headers: create thin wrapper modules
-- intrusive for headers: insert MY_EXPORT macro into header to create modules out of them
-- look into fmt
-    - Daniela-E explains how she transformed fmt to use modules (alongside header build): 
-        https://www.reddit.com/r/cpp/comments/1busseu/comment/kxvfayf
+- Daniela-E explains how she transformed fmt to use modules (alongside header build) on [reddit](https://www.reddit.com/r/cpp/comments/1busseu/comment/kxvfayf).
+- My [blog post](https://paulxicao.github.io/c++/2024/07/14/cpp-modules-dual-build.html) explaining implementation details.
