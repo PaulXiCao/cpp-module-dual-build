@@ -58,3 +58,4 @@ Every folder adds some new feature for a dual build mode of general libraries.
 - [ ] Try out `import std;` instead of scanning specifically for STD headers.
 - [ ] Investigate where external includes should go (global fragment vs module fragment).
   To be explicit look at this pseudo example: `#include <LibA/someHeader.hpp>` being included in a module unit for `LibB`.
+- [ ] Convert each cpp file into their own module implementation unit instead of a separate unity build type module implementation unit (possibly faster incremental build times).
