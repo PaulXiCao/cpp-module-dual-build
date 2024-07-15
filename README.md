@@ -34,6 +34,7 @@ Every folder adds some new feature for a dual build mode of general libraries.
 - `05/`: Dual build mode of a library containing multiple hpp/cpp files.
 - `06/`: Dual build mode of multiple libraries.
 - `07/`: Dual build mode where the import of external modules might appear multiple times (e.g. in primary module interface _and_ in the implementation unit).
+- `08/`: Each cpp file is (conditionally) converted to a module implementation unit instead of a separate unity-build type module implementation unit.
 
 # Resources
 
@@ -58,4 +59,4 @@ Every folder adds some new feature for a dual build mode of general libraries.
 - [ ] Try out `import std;` instead of scanning specifically for STD headers.
 - [ ] Investigate where external includes should go (global fragment vs module fragment).
   To be explicit look at this pseudo example: `#include <LibA/someHeader.hpp>` being included in a module unit for `LibB`.
-- [ ] Convert each cpp file into their own module implementation unit instead of a separate unity build type module implementation unit (possibly faster incremental build times).
+- [x] Convert each cpp file into their own module implementation unit instead of a separate unity build type module implementation unit (possibly faster incremental build times).
