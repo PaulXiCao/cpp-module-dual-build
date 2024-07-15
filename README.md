@@ -39,3 +39,20 @@ Every folder adds some new feature for a dual build mode of general libraries.
 - Daniela-E explains how she transformed fmt to use modules (alongside header build) on [reddit](https://www.reddit.com/r/cpp/comments/1busseu/comment/kxvfayf).
 - My [blog post](https://paulxicao.github.io/c++/2024/07/14/cpp-modules-dual-build.html) explaining implementation details.
 - [Reddit discussion](https://www.reddit.com/r/cpp/comments/1e37dd6/dual_build_mode_header_includes_or_module_imports/) about this dual build idea
+
+# Todos
+
+- [ ] How to treat external libraries automatically (instead of checking a library specific macro multiple times)?
+- [ ] Are there any issues with shared/static libraries?
+- [ ] How should one treat the case when only part of the library has been modularized?
+- [ ] Typical unity-build issues (e.g. static functions with the same name/arguments in different cpp files)?
+- [ ] Discuss expected compile-time benefits/regressions
+  - [ ] benefit: `import`ing should be faster than `include`ing headers multiple times
+  - [ ] regression: modularizing a library under development might be result in long compilation times of the module implementation unit `*module_impl.cpp`)?
+- [ ] Investigate wrongful `include`ing of headers when the module was build instead (should not be possible for correctly set include directories)?
+- [ ] Does ccache work with modules in general?
+- [ ] Can we import the same module in a primary module interface and in one of its module implementation units? 
+  If so, then we could get rid of the ugly `ONLY_SCAN_OTHER_LIBRARIES_FOR_IMPORT` macro.
+- [ ] Try out `import std;` instead of scanning specifically for STD headers.
+- [ ] Investigate where external includes should go (global fragment vs module fragment).
+  To be explicit look at this pseudo example: `#include <LibA/someHeader.hpp>` being included in a module unit for `LibB`.
