@@ -33,6 +33,7 @@ Every folder adds some new feature for a dual build mode of general libraries.
 - `04/`: Dual build mode with a separate module implementation unit.
 - `05/`: Dual build mode of a library containing multiple hpp/cpp files.
 - `06/`: Dual build mode of multiple libraries.
+- `07/`: Dual build mode where the import of external modules might appear multiple times (e.g. in primary module interface _and_ in the implementation unit).
 
 # Resources
 
@@ -51,8 +52,9 @@ Every folder adds some new feature for a dual build mode of general libraries.
   - [ ] regression: modularizing a library under development might be result in long compilation times of the module implementation unit `*module_impl.cpp`)?
 - [ ] Investigate wrongful `include`ing of headers when the module was build instead (should not be possible for correctly set include directories)?
 - [ ] Does ccache work with modules in general?
-- [ ] Can we import the same module in a primary module interface and in one of its module implementation units? 
+- [x] Can we import the same module in a primary module interface and in one of its module implementation units? 
   If so, then we could get rid of the ugly `ONLY_SCAN_OTHER_LIBRARIES_FOR_IMPORT` macro.
+  - Answer: Yes! This reduces the amount of boilerplate ;)
 - [ ] Try out `import std;` instead of scanning specifically for STD headers.
 - [ ] Investigate where external includes should go (global fragment vs module fragment).
   To be explicit look at this pseudo example: `#include <LibA/someHeader.hpp>` being included in a module unit for `LibB`.
