@@ -35,6 +35,7 @@ Every folder adds some new feature for a dual build mode of general libraries.
 - `06/`: Dual build mode of multiple libraries.
 - `07/`: Dual build mode where the import of external modules might appear multiple times (e.g. in primary module interface _and_ in the implementation unit).
 - `08/`: Each cpp file is (conditionally) converted to a module implementation unit instead of a separate unity-build type module implementation unit.
+- `09/`: Create wrapper module explicitly stating each entity to export. Module has no implementations (non-ABI breaking).
 
 # Resources
 
